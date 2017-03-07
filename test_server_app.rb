@@ -34,18 +34,26 @@ class ServerAppTest < Minitest::Test
   end
 
   def test_lorem_standard
+    skip
     response = get("/lorem/standard")
     assert_includes(response.body, "adipisicing", "ullamco")
   end
 
   def test_lorem_zombie
+    skip
     response = get("/lorem/zombie")
     assert_includes(response.body, "Zombie", "brains")
   end
 
   def test_lorem_herpderp
+    skip
     response = get("/lorem/herpderp")
     assert_includes(response.body, "derpsu", "derperker")
+  end
+
+  def test_lorem_bacon_count
+    response = get("/lorem/bacon?paragraphs=3")
+    assert_includes(response.body, "Tenderloin", "kielbasa")
   end
 
 end

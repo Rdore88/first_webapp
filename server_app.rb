@@ -1,8 +1,9 @@
 require "sinatra/base"
 require "pry"
 require "httparty"
-require_relative "ipsum"
+require_relative "zombie"
 require_relative 'intro'
+require_relative 'bacon'
 
 class ServerApp < Sinatra::Base
 
@@ -15,16 +16,20 @@ get "/billy" do
   Intro.custom(result)
 end
 
+get "/lorem/zombie" do
+  paragraphs = ["one", "two", "three"]
+  output = Zombie.new
+  output.send((paragraphs.sample))
+end
+
 get "/lorem/herpderp" do
-  body(Ipsum.herpderp)
+  body(Herpderp.herpderp)
 end
 
 get "/lorem/bacon" do
-  body(Ipsum.bacon)
-end
-
-get "/lorem/zombie" do
-  body(Ipsum.zombie)
+  number_paragraphs = params["paragraphs"].to_i
+  output = Bacon.new
+  body(output.to_print(number_paragraphs))
 end
 
 get "/lorem/standard" do
