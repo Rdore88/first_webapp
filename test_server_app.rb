@@ -28,4 +28,9 @@ class ServerAppTest < Minitest::Test
     assert response.ok?
   end
 
+  def test_name_message
+    response = get("/billy/?name=Robby")
+    assert_equal "Hello Robby! Welcome to my website!", response.body
+  end
+
 end
