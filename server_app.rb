@@ -2,16 +2,17 @@ require "sinatra/base"
 require "pry"
 require "httparty"
 require_relative "ipsum"
+require_relative 'intro'
 
 class ServerApp < Sinatra::Base
 
 get "/" do
-  "Hello, welcome to my website!"
+  Intro.general
 end
 
 get "/billy" do
   result = params["name"]
-  "Hello #{result}! Welcome to my website!"
+  Intro.custom(result)
 end
 
 get "/lorem/herpderp" do

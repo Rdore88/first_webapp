@@ -20,7 +20,7 @@ class ServerAppTest < Minitest::Test
 
   def test_welcome_message
     response = get("/")
-    assert_equal "Hello, welcome to my website!", response.body
+    assert_equal "Hello! Welcome to my website!", response.body
   end
 
   def test_name_message
