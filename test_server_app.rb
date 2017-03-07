@@ -24,13 +24,28 @@ class ServerAppTest < Minitest::Test
   end
 
   def test_name_message
-    response = get("/billy/")
+    response = get("/billy")
     assert response.ok?
   end
 
   def test_name_message
-    response = get("/billy/?name=Robby")
+    response = get("/billy?name=Robby")
     assert_equal "Hello Robby! Welcome to my website!", response.body
+  end
+
+  def test_lorem_standard
+    response = get("/lorem/standard")
+    assert_includes(response.body, "adipisicing", "ullamco")
+  end
+
+  def test_lorem_zombie
+    response = get("/lorem/zombie")
+    assert_includes(response.body, "Zombie", "brains")
+  end
+
+  def test_lorem_herpderp
+    response = get("/lorem/herpderp")
+    assert_includes(response.body, "derpsu", "derperker")
   end
 
 end
