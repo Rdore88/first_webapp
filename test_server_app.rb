@@ -24,7 +24,7 @@ class ServerAppTest < Minitest::Test
   end
 
   def test_name_message
-    response = get("/billy")
+    response = get("/billy/")
     assert response.ok?
   end
 

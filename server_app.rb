@@ -5,7 +5,7 @@ require "httparty"
 class ServerApp < Sinatra::Base
 
 get "/" do
-  "Hello, welcome to my website"
+  "Hello, welcome to my website!"
 end
 
 get "/billy/"do
