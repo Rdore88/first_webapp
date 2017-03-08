@@ -4,6 +4,8 @@ require "httparty"
 require_relative "zombie"
 require_relative 'intro'
 require_relative 'bacon'
+require_relative 'herpderp'
+require_relative 'standard'
 
 class ServerApp < Sinatra::Base
 
@@ -19,21 +21,25 @@ end
 get "/lorem/zombie" do
   paragraphs = ["one", "two", "three"]
   output = Zombie.new
-  output.send((paragraphs.sample))
+  output.send(paragraphs.sample)
 end
 
 get "/lorem/herpderp" do
-  body(Herpderp.herpderp)
+  paragraphs = ["one", "two", "three", "four"]
+  output = Herpderp.new
+  output.send(paragraphs.sample)
 end
 
 get "/lorem/bacon" do
-  number_paragraphs = params["paragraphs"].to_i
+  paragraphs = ["one", "two", "three", "four"]
   output = Bacon.new
-  body(output.to_print(number_paragraphs))
+  output.send(paragraphs.sample)
 end
 
 get "/lorem/standard" do
-  body(Ipsum.standard)
+  paragraphs = ["one", "two", "three", "four"]
+  output = Standard.new
+  output.send(paragraphs.sample)
 end
 
 run! if app_file == $PROGRAM_NAME
